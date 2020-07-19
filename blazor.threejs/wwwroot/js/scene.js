@@ -17,6 +17,17 @@ function createScene(reference) {
     document.body.appendChild(renderer.domElement);
 }
 
+window.addEventListener('resize', onWindowResize, false);
+
+function onWindowResize() {
+
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+
+    renderer.setSize(window.innerWidth, window.innerHeight);
+
+}
+
 function onDocumentMouseDown(event) {
     event.preventDefault();
     mouse.x = (event.clientX / renderer.domElement.clientWidth) * 2 - 1;
